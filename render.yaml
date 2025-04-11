@@ -4,8 +4,7 @@ services:
     env: docker
     plan: free
     dockerfilePath: ./AzureShop/WebApi/Dockerfile
-    buildCommand: "" # pas nécessaire si ton Dockerfile fait déjà le build
-    startCommand: "dotnet WebApi.dll"
+    buildCommand: ""
     autoDeploy: true
     rootDir: AzureShop/WebApi
 
@@ -14,7 +13,6 @@ services:
     env: docker
     plan: free
     dockerfilePath: ./produit-frontend/Dockerfile
-    buildCommand: "" # idem, déjà dans Dockerfile
-    startCommand: "" # nginx démarre automatiquement
+    buildCommand: ""
     autoDeploy: true
     rootDir: produit-frontend
