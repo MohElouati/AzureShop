@@ -10,11 +10,13 @@ RUN npm install
 COPY produit-frontend/ ./
 
 RUN npm run build -- --configuration production
-
+RUN ls -l /app/dist/produit-frontend
 FROM nginx:alpine
 
 COPY --from=build /app/dist/produit-frontend /usr/share/nginx/html
 COPY --from=build /app/public/_redirects /usr/share/nginx/html/_redirects
 
 EXPOSE 80
+
+
 CMD ["nginx", "-g", "daemon off;"]
