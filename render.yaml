@@ -9,12 +9,10 @@ services:
         - AzureShop/WebApi/**
     autoDeploy: true
 
+services:
   - type: web
     name: azure-frontend
     env: docker
     plan: free
-    dockerfilePath: produit-frontend/Dockerfile
-    buildFilter:
-      paths:
-        - produit-frontend/**
+    dockerfilePath: ./produit-frontend/Dockerfile
     autoDeploy: true
