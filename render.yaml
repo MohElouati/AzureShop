@@ -14,3 +14,7 @@ services:
     dockerfilePath: produit-frontend/Dockerfile
     buildCommand: ""
     autoDeploy: true
+
+
+
+
