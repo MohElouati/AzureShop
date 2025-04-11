@@ -1,0 +1,60 @@
+<mat-card class="client-detail-card" *ngIf="client">
+  <mat-card-title>Détails du Client</mat-card-title>
+  <mat-card-content>
+    <p><strong>Prénom :</strong> {{ client.firstName }}</p>
+    <p><strong>Nom :</strong> {{ client.lastName }}</p>
+    <p><strong>Date de Naissance :</strong> {{ client.dateOfBirth | date }}</p>
+
+    <mat-divider class="my-divider"></mat-divider>
+
+    <h3>Adresse(s)</h3>
+    <ng-container *ngIf="client.adresses && client.adresses.length > 0; else noAddress">
+      <mat-list dense>
+        <mat-list-item *ngFor="let adresse of client.adresses">
+          {{ adresse.street }}, {{ adresse.zipcode }} {{ adresse.city }}, {{ adresse.country }} <br>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+    <ng-template #noAddress>
+      <p>Aucune adresse enregistrée.</p>
+    </ng-template>
+
+    <mat-divider class="my-divider"></mat-divider>
+
+    <h3>Commandes</h3>
+    <ng-container *ngIf="client.commandes && client.commandes.length > 0; else noCommande">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let commande of client.commandes">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Commande #{{ commande.numCommande }} — {{ commande.date | date:'short' }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <ng-container *ngIf="commande?.commandeProduits && commande.commandeProduits.length > 0; else noProducts">
+
+
+            <mat-list dense>
+              <mat-list-item *ngFor="let produit of commande.commandeProduits">
+                {{ produit.produit?.nom || 'Produit supprimé' }} (x{{ produit.quantity }})
+              </mat-list-item>
+            </mat-list>
+          </ng-container>
+          <ng-template #noProducts>
+            <p style="margin-left: 16px;">Aucun produit dans cette commande.</p>
+          </ng-template>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </ng-container>
+    <ng-template #noCommande>
+      <p>Aucune commande enregistrée.</p>
+    </ng-template>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="navigateToEditClient()">Modifier</button>
+    <button mat-raised-button color="accent" (click)="navigateToNewOrder()">Passer une commande</button>
+    <button mat-raised-button color="warn" (click)="deleteClient()">Supprimer</button>
+    <button mat-button (click)="navigateBack()">Retour</button>
+  </mat-card-actions>
+</mat-card>

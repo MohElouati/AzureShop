@@ -1,0 +1,22 @@
+<mat-card *ngIf="product" class="product-detail-card">
+  <mat-card-title>Détails du Produit</mat-card-title>
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <div class="product-info">
+      <p><span>🛍️ Nom :</span> {{ product.nom }}</p>
+      <p><span>📝 Description :</span> {{ product.description }}</p>
+      <p><span>💰 Prix :</span> {{ product.prix }} €</p>
+      <p><span>📦 Stock :</span> {{ product.unitsInStock }}</p>
+      <p><span>⚖️ Poids :</span> {{ product.poids || '—' }} kg</p>
+    </div>
+  </mat-card-content>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-actions class="action-buttons">
+    <button mat-raised-button color="primary" (click)="navigateToEditProduct()">Modifier</button>
+    <button mat-raised-button color="warn" (click)="deleteProduct()">Supprimer</button>
+    <button mat-stroked-button (click)="navigateBack()">Retour</button>
+  </mat-card-actions>
+</mat-card>

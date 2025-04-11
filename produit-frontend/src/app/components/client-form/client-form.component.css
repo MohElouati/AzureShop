@@ -1,0 +1,20 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.address-group {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+h3 {
+  margin-top: 20px;
+}

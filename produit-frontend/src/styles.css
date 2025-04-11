@@ -1,0 +1,62 @@
+/* Apply to all mat-tables */
+table.mat-table {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+}
+
+/* Header row */
+.mat-header-row {
+  background-color: #f1f3f5;
+  font-weight: 600;
+  color: #2e3a59;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.mat-header-cell {
+  background: linear-gradient(to right, #4e73df, #6c63ff);
+  color: white;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 20px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+
+/* Body cell */
+.mat-cell {
+  padding: 12px 20px;
+  font-size: 14px;
+  border-bottom: 1px solid #e0e0e0;
+  color: #495057;
+}
+
+/* Row hover effect */
+.mat-row {
+  transition: background-color 0.2s ease;
+}
+.mat-row:hover {
+  background-color: #f8f9fa;
+}
+
+/* Button styling inside table */
+.mat-cell button {
+  margin-right: 8px;
+  transition: transform 0.2s ease;
+}
+.mat-cell button:hover {
+  transform: scale(1.05);
+}
+
+/* Remove border on last row */
+.mat-row:last-child .mat-cell {
+  border-bottom: none;
+}
