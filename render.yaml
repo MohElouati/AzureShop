@@ -3,16 +3,14 @@ services:
     name: azure-backend
     env: docker
     plan: free
-    dockerfilePath: ./AzureShop/WebApi/Dockerfile
+    dockerfilePath: AzureShop/WebApi/Dockerfile
     buildCommand: ""
     autoDeploy: true
-    rootDir: AzureShop/WebApi
 
   - type: web
     name: azure-frontend
     env: docker
     plan: free
-    dockerfilePath: ./produit-frontend/Dockerfile
+    dockerfilePath: produit-frontend/Dockerfile
     buildCommand: ""
     autoDeploy: true
-    rootDir: produit-frontend
