@@ -15,8 +15,7 @@ RUN npm run build -- --configuration production
 FROM nginx:alpine
 COPY --from=build /app/dist/produit-frontend /usr/share/nginx/html
 
-
-COPY ./static/_redirects /usr/share/nginx/html/_redirects
+COPY static/_redirects /usr/share/nginx/html/_redirects
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
