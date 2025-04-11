@@ -9,7 +9,6 @@ services:
         - AzureShop/WebApi/**
     autoDeploy: true
 
-services:
   - type: web
     name: azure-frontend
     env: docker
