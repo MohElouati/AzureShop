@@ -24,6 +24,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "_redirects",
+                "input": "static",
+                "output": "/"
               }
             ],
             "styles": [
@@ -83,6 +88,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "_redirects",
+                "input": "static",
+                "output": "/"
               }
             ],
             "styles": [
