@@ -15,7 +15,7 @@ namespace DAL
                 .Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<AzureShopContext>();
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+            optionsBuilder.UseSqlite(configuration.GetConnectionString("DefaultConnection"));
 
             return new AzureShopContext(optionsBuilder.Options);
         }

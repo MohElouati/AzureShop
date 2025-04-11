@@ -15,11 +15,11 @@ namespace DAL.Migrations
                 name: "Clients",
                 columns: table => new
                 {
-                    ClientID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    ClientID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    FirstName = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,13 +30,13 @@ namespace DAL.Migrations
                 name: "Produits",
                 columns: table => new
                 {
-                    ProduitID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Nom = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Prix = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    UnitsInStock = table.Column<int>(type: "int", nullable: false),
-                    Poids = table.Column<int>(type: "int", nullable: true)
+                    ProduitID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nom = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Prix = table.Column<decimal>(type: "TEXT", nullable: false),
+                    UnitsInStock = table.Column<int>(type: "INTEGER", nullable: false),
+                    Poids = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -47,13 +47,13 @@ namespace DAL.Migrations
                 name: "Adresses",
                 columns: table => new
                 {
-                    AdresseID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Street = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    City = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    ZipCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: true),
-                    Country = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    ClientID = table.Column<int>(type: "int", nullable: false)
+                    AdresseID = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Street = table.Column<string>(type: "TEXT", maxLength: 50, nullable: false),
+                    City = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    ZipCode = table.Column<string>(type: "TEXT", maxLength: 10, nullable: true),
+                    Country = table.Column<string>(type: "TEXT", maxLength: 50, nullable: true),
+                    ClientID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,10 +70,10 @@ namespace DAL.Migrations
                 name: "Commandes",
                 columns: table => new
                 {
-                    NumCommande = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DateCommande = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ClientID = table.Column<int>(type: "int", nullable: false)
+                    NumCommande = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    DateCommande = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ClientID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,10 +90,10 @@ namespace DAL.Migrations
                 name: "CommandeProduits",
                 columns: table => new
                 {
-                    NumCommande = table.Column<int>(type: "int", nullable: false),
-                    ProduitID = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    ProduitID1 = table.Column<int>(type: "int", nullable: true)
+                    NumCommande = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProduitID = table.Column<int>(type: "INTEGER", nullable: false),
+                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
+                    ProduitID1 = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {

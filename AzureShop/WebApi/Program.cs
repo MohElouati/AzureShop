@@ -10,7 +10,9 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<AzureShopContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
 
 
 builder.Services.AddCors(options =>
@@ -33,6 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseStaticFiles();
 
 app.UseCors("AllowAll");
 
