@@ -2,10 +2,12 @@ FROM node:18 AS build
 
 WORKDIR /app
 
-COPY package*.json ./
+
+COPY produit-frontend/package*.json ./
 RUN npm install
 
-COPY . ./
+
+COPY produit-frontend/ ./
 
 RUN npm run build -- --configuration production
 

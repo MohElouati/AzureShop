@@ -13,5 +13,7 @@ services:
     name: azure-frontend
     env: docker
     plan: free
-    dockerfilePath: produit-frontend/Dockerfile
+     dockerfilePath: produit-frontend/Dockerfile
+    build:
+        context: produit-frontend
     autoDeploy: true
