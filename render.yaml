@@ -1,19 +1,20 @@
 services:
   - type: web
-    name: azure-webapi
+    name: azure-backend
     env: docker
-    repo: https://github.com/MohElouati/AzureShop
-    dockerfilePath: AzureShop/WebApi/Dockerfile
     plan: free
-    envVars:
-      - key: ASPNETCORE_ENVIRONMENT
-        value: Production
-      - key: ConnectionStrings__DefaultConnection
-        value: YOUR_DB_CONNECTION_STRING_HERE
+    dockerfilePath: ./AzureShop/WebApi/Dockerfile
+    buildCommand: "" # pas nécessaire si ton Dockerfile fait déjà le build
+    startCommand: "dotnet WebApi.dll"
+    autoDeploy: true
+    rootDir: AzureShop/WebApi
 
   - type: web
     name: azure-frontend
     env: docker
-    repo: https://github.com/MohElouati/AzureShop
-    dockerfilePath: produit-frontend/Dockerfile
     plan: free
+    dockerfilePath: ./produit-frontend/Dockerfile
+    buildCommand: "" # idem, déjà dans Dockerfile
+    startCommand: "" # nginx démarre automatiquement
+    autoDeploy: true
+    rootDir: produit-frontend
