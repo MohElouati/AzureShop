@@ -15,14 +15,14 @@ builder.Services.AddDbContext<AzureShopContext>(options =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngularApp", policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials(); 
+              .AllowAnyMethod();
     });
 });
+
 
 var app = builder.Build();
 
@@ -34,7 +34,7 @@ if (app.Environment.IsDevelopment())
 }
 
 
-app.UseCors("AllowAngularApp");
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 
