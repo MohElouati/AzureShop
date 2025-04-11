@@ -4,8 +4,9 @@ services:
     env: docker
     plan: free
     dockerfilePath: AzureShop/WebApi/Dockerfile
-    buildCommand: ""
-    startCommand: ""
+    buildFilter:
+      paths:
+        - AzureShop/WebApi/**
     autoDeploy: true
 
   - type: web
@@ -13,6 +14,7 @@ services:
     env: docker
     plan: free
     dockerfilePath: produit-frontend/Dockerfile
-    buildCommand: ""
-    startCommand: ""
+    buildFilter:
+      paths:
+        - produit-frontend/**
     autoDeploy: true
