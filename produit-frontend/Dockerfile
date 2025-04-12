@@ -1,26 +1,26 @@
-# Stage 1: Build Angular App
 FROM node:18 AS build
 
 WORKDIR /app
 
-# Install dependencies
-COPY package*.json ./
+# Correctly copy package files from subfolder
+COPY produit-frontend/package*.json ./
+
 RUN npm install
 
-# Copy source code
-COPY . .
+# Copy the full frontend code
+COPY produit-frontend/ ./
 
-# Build app
-RUN npm run build -- --configuration=production
+RUN npm run build -- --configuration production
 
-# Stage 2: Serve with NGINX
+
 FROM nginx:alpine
 
-# Copy built app to NGINX HTML folder
+# Copy the built app into NGINX public folder
 COPY --from=build /app/dist/produit-frontend /usr/share/nginx/html
 
-# Optional: enable this if you use client-side routes (e.g., Angular routing)
-# COPY public/_redirects /usr/share/nginx/html/_redirects
+# Optional: for routing (if you have a _redirects file)
+COPY produit-frontend/public/_redirects /usr/share/nginx/html/_redirects
 
 EXPOSE 80
+
 CMD ["nginx", "-g", "daemon off;"]
