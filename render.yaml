@@ -14,4 +14,7 @@ services:
     env: docker
     plan: free
     dockerfilePath: produit-frontend/Dockerfile
+    buildFilter:
+      paths:
+        - produit-frontend/**
     autoDeploy: true
