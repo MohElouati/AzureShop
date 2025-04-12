@@ -1,19 +1,17 @@
-# ---- Build stage ----
-  FROM node:18 AS build
-  WORKDIR /app
+FROM node:18 AS build
 
-  COPY package*.json ./
-  RUN npm install
+WORKDIR /app
 
-  COPY . .
-  RUN npm run build -- --configuration production
+COPY produit-frontend/package*.json ./
+RUN npm install
 
-  # ---- NGINX stage ----
-  FROM nginx:alpine
-  COPY --from=build /app/dist/produit-frontend /usr/share/nginx/html
+COPY produit-frontend/ ./
+RUN npm run build -- --configuration production
 
-  # Optional: clean routing for SPA
-  COPY ./public/_redirects /usr/share/nginx/html/_redirects
+FROM nginx:alpine
 
-  EXPOSE 80
-  CMD ["nginx", "-g", "daemon off;"]
+COPY --from=build /app/dist/produit-frontend /usr/share/nginx/html
+COPY --from=build /app/public/_redirects /usr/share/nginx/html/_redirects
+
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
