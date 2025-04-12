@@ -3,7 +3,7 @@ services:
     name: azure-frontend
     env: docker
     plan: free
-    dockerfilePath: ./Dockerfile
+    dockerfilePath: produit-frontend/Dockerfile
     buildFilter:
       paths:
         - produit-frontend/**
@@ -14,4 +14,7 @@ services:
     env: docker
     plan: free
     dockerfilePath: AzureShop/WebApi/Dockerfile
+    buildFilter:
+      paths:
+        - AzureShop/WebApi/**
     autoDeploy: true
