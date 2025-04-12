@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://+:10000");
 
 
 builder.Services.AddControllers();
